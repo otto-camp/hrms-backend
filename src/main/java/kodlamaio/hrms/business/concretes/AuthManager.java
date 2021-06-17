@@ -1,5 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kodlamaio.hrms.business.abstracts.AuthService;
@@ -65,8 +67,11 @@ public class AuthManager implements AuthService {
 		if (!checkIfExistsIdentityNumber(candidate.getIdentityNumber())) {
 			return new ErrorResult("Bu TCKN zaten kayıtlı!");
 		}
-		if(!checkIfPasswordEqualsPasswordRep(passwordRep, candidate.getPassword())) {
+		if(!checkIfPasswordEqualsPasswordRep(candidate.getPasswordRep(), candidate.getPassword())) {
 			return new ErrorResult("Şifreleriniz uyuşmuyor!");
+		}
+		if(!isEmailValid(candidate.getEmail())) {
+			return new ErrorResult("Emailiniz yanlış!");
 		}
 		candidateService.add(candidate);
 		return new SuccessResult("Kayıt işlemi başarıyla tamamlandı!");
@@ -121,6 +126,13 @@ public class AuthManager implements AuthService {
 			return true;
 		}
 		return false;
+
+	}
+	private boolean isEmailValid(String email) {
+		String emailPattern = "^[a-zA-Z0-9_!#$%&â€™*+/=?`{|}~^.-]+@[A-Z0-9.-]+.(com|org|net|edu|gov|mil|biz|info|mobi)(.[A-Z]{2})?$";
+
+		Pattern pattern = Pattern.compile(emailPattern, Pattern.CASE_INSENSITIVE);
+		return pattern.matcher(email).find();
 
 	}
 }
