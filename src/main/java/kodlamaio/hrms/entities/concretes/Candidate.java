@@ -34,6 +34,4 @@ public class Candidate extends User{
 	@Column(name="birth_date")
 	private String birthDate;
 	
-	//@OneToMany(mappedBy = "candidate")
-	//private List<CandidateCV> candidateCV;
 }

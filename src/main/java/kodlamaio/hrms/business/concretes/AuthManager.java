@@ -12,8 +12,6 @@ import kodlamaio.hrms.core.adapters.MernisService;
 import kodlamaio.hrms.core.utilities.result.ErrorResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstacts.CandidateDao;
-import kodlamaio.hrms.dataAccess.abstacts.EmployerDao;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.concretes.Employer;
 

@@ -24,6 +24,7 @@ public class EmployerManager implements EmployerService{
 
 	@Override
 	public Result add(Employer employer) {
+		employerDao.save(employer);
 		return new SuccessResult("İşveren eklendi!");
 	}
 
