@@ -1,4 +1,4 @@
-package kodlamaio.hrms.entities.concretes;
+package kodlamaio.hrms.entities.concretes.cv;
 
 import java.util.List;
 
@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import kodlamaio.hrms.entities.concretes.cv.University;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,21 +22,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="cities")
-public class City {
-	
+@Table(name = "faculties")
+public class Faculty {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 	
-	@Column(name="city_name")
-	private String cityName;
+	@Column(name = "faculty_name")
+	private String facultyName;
 	
-	@OneToMany(mappedBy = "city")
-	private List<JobAdvert> jobAdverts;
+	@Column(name = "status")
+	private int status;
 	
-	@OneToMany(mappedBy = "city")
+	@OneToMany(mappedBy = "faculty")
 	@JsonIgnore
-	private List<University> university;
+	private List<Section> section;
+	
+	@ManyToOne
+	@JoinColumn(name = "university")
+	private University university;
 }

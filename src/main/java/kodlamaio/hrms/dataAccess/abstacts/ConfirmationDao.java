@@ -8,10 +8,10 @@ import kodlamaio.hrms.entities.concretes.ConfirmationCode;
 
 public interface ConfirmationDao extends JpaRepository<ConfirmationCode, Integer> {
 
-	ConfirmationCode getByConfirmationCode(String confirmationCode);
+	//ConfirmationCode getByConfirmationCode(String confirmationCode);
 
-	List<ConfirmationCode> getByIsConfirmed(boolean isConfirmed);
+	//List<ConfirmationCode> getByIsConfirmed(boolean isConfirmed);
 
-	ConfirmationCode getByUserIdAndId(int userId, int id);
+	//ConfirmationCode getByUserIdAndId(int userId, int id);
 
 }
