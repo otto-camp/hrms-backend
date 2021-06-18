@@ -32,6 +32,6 @@ public class Section {
 	private int status;
 	
 	@ManyToOne
-	@JoinColumn(name = "faculty")
+	@JoinColumn(name = "faculty_id")
 	private Faculty faculty;
 }

@@ -94,7 +94,7 @@ public class KPSPublicSoapStub extends org.apache.axis.client.Stub implements tr
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", _t);
         }
     }
-
+    
     public boolean TCKimlikNoDogrula(long TCKimlikNo, java.lang.String ad, java.lang.String soyad, int dogumYili) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();

@@ -1,10 +1,19 @@
 package kodlamaio.hrms.entities.concretes;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import kodlamaio.hrms.entities.concretes.cv.Cv;
+import kodlamaio.hrms.entities.concretes.cv.CvEducation;
+import kodlamaio.hrms.entities.concretes.cv.CvExperience;
+import kodlamaio.hrms.entities.concretes.cv.CvLanguage;
+import kodlamaio.hrms.entities.concretes.cv.CvPhoto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,4 +43,18 @@ public class Candidate extends User{
 	@Column(name="birth_date")
 	private String birthDate;
 	
+	@OneToMany(mappedBy = "candidate")
+	private List<CvEducation> cvEducations;
+	
+	@OneToMany(mappedBy = "candidate")
+	private List<CvLanguage> cvLanguages;
+	
+	@OneToMany(mappedBy = "candidate")
+	private List<CvExperience> cvExperiences;
+	
+	@OneToMany(mappedBy = "candidate")
+	private List<CvPhoto> cvPhotos;
+	
+	@OneToMany(mappedBy = "candidate")
+	private List<Cv> cvs;
 }

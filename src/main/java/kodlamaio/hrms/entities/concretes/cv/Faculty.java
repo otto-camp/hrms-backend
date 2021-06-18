@@ -38,9 +38,9 @@ public class Faculty {
 	
 	@OneToMany(mappedBy = "faculty")
 	@JsonIgnore
-	private List<Section> section;
+	private List<Section> sections;
 	
 	@ManyToOne
-	@JoinColumn(name = "university")
+	@JoinColumn(name = "university_id")
 	private University university;
 }

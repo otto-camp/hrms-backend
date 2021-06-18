@@ -40,12 +40,12 @@ public class University {
 	
 	@OneToMany(mappedBy = "university")
 	@JsonIgnore
-	private List<Faculty> faculty;
+	private List<Faculty> faculties;
 	
 	@ManyToOne
-	@JoinColumn(name = "city")
+	@JoinColumn(name = "city_id")
 	private City city;
 	
-	@OneToOne(mappedBy = "university")
+	@OneToOne(mappedBy = "university_id")
 	private transient CvEducation cvEducation;
 }
