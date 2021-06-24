@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.PastOrPresent;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,10 +41,17 @@ public class CvEducation {
 	private LocalDate graduationDate;
 	
 	@OneToOne(mappedBy = "university_id")
+	@JsonIgnore
 	private transient University university;
 	
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
+	@JsonIgnore
 	private Candidate candidate;
+	
+	@ManyToOne
+	@JoinColumn(name = "education_id")
+	@JsonIgnore
+	private Cv cv;
 
 }

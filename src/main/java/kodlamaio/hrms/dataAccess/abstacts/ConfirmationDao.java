@@ -1,6 +1,5 @@
 package kodlamaio.hrms.dataAccess.abstacts;
 
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

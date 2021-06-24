@@ -9,8 +9,8 @@ import kodlamaio.hrms.entities.dtos.CvDto;
 
 public interface CvService {
 	
-	Result add(Cv cv);
-	Result update(Cv cv);
+	Result add(CvDto cvDto);
+	Result update(CvDto cvDto);
 	Result delete(Cv cv);
 	
 	DataResult<List<Cv>> getAll();

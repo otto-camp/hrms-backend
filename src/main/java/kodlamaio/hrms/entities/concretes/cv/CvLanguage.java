@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,5 +40,11 @@ public class CvLanguage {
 	
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
+	@JsonIgnore
 	private Candidate candidate;
+	
+	@ManyToOne
+	@JoinColumn(name = "language_id")
+	@JsonIgnore
+	private Cv cv;
 }
