@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concretes.cv;
 
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,18 +49,6 @@ public class Cv {
 	@JsonIgnore
 	private Candidate candidate;
 
-	@OneToMany(mappedBy = "cv")
-	private List<CvEducation> cvEducations;
 
-	@OneToMany(mappedBy = "cv")
-	private List<CvExperience> cvExperiences;
-
-	@OneToMany(mappedBy = "cv")
-	private List<CvLanguage> cvLanguages;
-
-	@OneToMany(mappedBy = "cv")
-	private List<CvPhoto> cvPhotos;
-
-	public Cv(Candidate candidate, String a, String b, String c, String d, String e) {
-	}
+	
 }

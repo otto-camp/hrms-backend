@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,17 +46,19 @@ public class JobAdvert {
 	private Date applicationStartDate;
 	
 	@Column(name="application_deadline")
-	private LocalDate applicationDeadline = LocalDate.now();
+	private LocalDate applicationDeadline;
 	
 	@Column(name="status")
 	private boolean status;
 	
-	//@ManyToOne()
-	//@JoinColumn(name="employer_id")
-	//private Employer employer;
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	@JsonPropertyOrder({"companyName","email","id","website","phoneNumber"})
+	private transient Employer employer;
 	
 	@ManyToOne()
 	@JoinColumn(name = "city")
+	@JsonPropertyOrder({"id","name"})
 	private City city;
 	
 	@ManyToOne()

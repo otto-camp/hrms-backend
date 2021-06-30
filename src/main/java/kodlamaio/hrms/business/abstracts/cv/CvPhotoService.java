@@ -10,10 +10,14 @@ import kodlamaio.hrms.entities.concretes.cv.CvPhoto;
 
 public interface CvPhotoService {
 	Result add(CvPhoto cvPhoto, MultipartFile file);
+
 	Result update(CvPhoto cvPhoto);
+
 	Result delete(int id);
-	
+
 	DataResult<CvPhoto> getById(int id);
+
 	DataResult<List<CvPhoto>> getAll();
+
 	DataResult<CvPhoto> getByCandidateId(int id);
 }

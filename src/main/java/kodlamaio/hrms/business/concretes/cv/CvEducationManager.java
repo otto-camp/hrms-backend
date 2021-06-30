@@ -14,7 +14,7 @@ import kodlamaio.hrms.dataAccess.abstacts.cv.CvEducationDao;
 import kodlamaio.hrms.entities.concretes.cv.CvEducation;
 
 @Service
-public class CvEducationManager implements CvEducationService{
+public class CvEducationManager implements CvEducationService {
 
 	private CvEducationDao cvEducationDao;
 
@@ -28,6 +28,7 @@ public class CvEducationManager implements CvEducationService{
 	public Result add(CvEducation cvEducation) {
 		this.cvEducationDao.save(cvEducation);
 		return new SuccessResult("Eğitim bilgileriniz eklendi!");
+
 	}
 
 	@Override
@@ -59,6 +60,7 @@ public class CvEducationManager implements CvEducationService{
 
 	@Override
 	public DataResult<List<CvEducation>> getByCandidateIdOrderByGraduationDateDesc(int id) {
-		return new SuccessDataResult<List<CvEducation>>(this.cvEducationDao.getAllByCandidateIdOrderByGraduationDateDesc(id));
+		return new SuccessDataResult<List<CvEducation>>(
+				this.cvEducationDao.getAllByCandidateIdOrderByGraduationDateDesc(id));
 	}
 }

@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
@@ -33,12 +33,8 @@ public class CvPhoto {
 	
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
-	@JsonIgnore
+	@JsonBackReference
 	private Candidate candidate;
 	
-	@ManyToOne
-	@JoinColumn(name = "photo_id")
-	@JsonIgnore
-	private Cv cv;
 	
 }

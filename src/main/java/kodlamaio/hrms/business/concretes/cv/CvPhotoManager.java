@@ -30,12 +30,11 @@ public class CvPhotoManager implements CvPhotoService{
 	}
 
 	@Override
-	
 	public Result add(CvPhoto cvPhoto, MultipartFile file) {
-		Map<String, String> uploadImage = this.imageService.uploadImage(file).getData();
-		cvPhoto.setPhotoUrl(uploadImage.get("url"));
+		Map<String, String> imageUpload = this.imageService.uploadImage(file).getData();
+		cvPhoto.setPhotoUrl(imageUpload.get("secure_url"));
 		this.cvPhotoDao.save(cvPhoto);
-		return new SuccessResult("Fotoğrafınız kaydedildi!");
+		return new SuccessResult("Fotoğrafınız eklendi!");
 	}
 
 	@Override

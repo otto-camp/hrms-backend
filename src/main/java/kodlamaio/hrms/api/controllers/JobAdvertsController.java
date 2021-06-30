@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,22 +33,22 @@ public class JobAdvertsController {
 		return jobAdvertService.add(jobAdvert);
 	}
 	
-	@PostMapping("/getAll")
+	@GetMapping("/getAll")
 	public DataResult<List<JobAdvert>> getAll(){
 		return jobAdvertService.getAll();
 	}
 	
-	@PostMapping("/get-by-application-deadline")
+	@GetMapping("/get-by-application-deadline")
 	public DataResult<List<JobAdvert>> getByApplicationDeadline(@RequestParam Date applicationDeadline){
 		return jobAdvertService.getByApplicationDeadline(applicationDeadline);
 	}
 	
-	@PostMapping("/get-by-status")
+	@GetMapping("/get-by-status")
 	public DataResult<List<JobAdvert>> getByStatus(boolean status){
 		return jobAdvertService.getByStatus(status);
 	}
 	
-	@PostMapping("/get-by-city")
+	@GetMapping("/get-by-city")
 	public DataResult<List<JobAdvert>> getByCity(@RequestParam City city){
 		return jobAdvertService.getByCity(city);
 	}

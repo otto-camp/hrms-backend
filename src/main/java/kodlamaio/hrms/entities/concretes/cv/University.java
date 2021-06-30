@@ -10,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import kodlamaio.hrms.entities.concretes.City;
 import lombok.AllArgsConstructor;
@@ -39,13 +36,14 @@ public class University {
 	private int status;
 	
 	@OneToMany(mappedBy = "university")
-	@JsonIgnore
+	
 	private List<Faculty> faculties;
 	
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
 	
-	@OneToOne(mappedBy = "university_id")
-	private transient CvEducation cvEducation;
+	@ManyToOne
+	@JoinColumn(name = "university_id")
+	private CvEducation cvEducation;
 }

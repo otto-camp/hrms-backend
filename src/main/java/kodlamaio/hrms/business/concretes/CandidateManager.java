@@ -45,8 +45,5 @@ public class CandidateManager implements CandidateService{
 		return new SuccessDataResult<Candidate>(this.candidateDao.getByIdentityNumber(identityNumber));
 	}
 
-	
-	
-	
 
 }
