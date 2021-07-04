@@ -1,7 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +42,7 @@ public class JobAdvert {
 	private String vacantPositionNumber;
 	
 	@Column(name="application_start_date")
-	private Date applicationStartDate;
+	private LocalDate applicationStartDate = LocalDate.now();
 	
 	@Column(name="application_deadline")
 	private LocalDate applicationDeadline;
@@ -51,9 +50,12 @@ public class JobAdvert {
 	@Column(name="status")
 	private boolean status;
 	
+	//@Column(name = "is_verified")
+	//private boolean isVerified = false;
+	
 	@ManyToOne()
 	@JoinColumn(name="employer_id")
-	@JsonPropertyOrder({"companyName","email","id","website","phoneNumber"})
+	@JsonPropertyOrder({"companyName","website"})
 	private transient Employer employer;
 	
 	@ManyToOne()
@@ -64,4 +66,12 @@ public class JobAdvert {
 	@ManyToOne()
 	@JoinColumn(name="job_title", referencedColumnName = "id")
 	private JobTitle jobTitle;
+	
+	@ManyToOne()
+	@JoinColumn(name = "job_type")
+	private JobType jobType;
+	
+	@ManyToOne()
+	@JoinColumn(name = "job_time")
+	private JobTime jobTime;
 }

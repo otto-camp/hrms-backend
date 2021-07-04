@@ -25,6 +25,9 @@ public class ConfirmationCode {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name = "user_id")
+	private int userId;
+	
 	@Column(name="confirmation_code")
 	private String confirmationCode;
 	
@@ -32,6 +35,6 @@ public class ConfirmationCode {
 	private boolean isConfirmed;
 	
 	@Column(name="confirmation_date")
-	private LocalDate confirmationDate;
+	private LocalDate confirmationDate = LocalDate.now();
 	
 }

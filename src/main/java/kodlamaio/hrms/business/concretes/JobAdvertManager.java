@@ -11,23 +11,51 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstacts.CityDao;
+import kodlamaio.hrms.dataAccess.abstacts.EmployerDao;
 import kodlamaio.hrms.dataAccess.abstacts.JobAdvertDao;
+import kodlamaio.hrms.dataAccess.abstacts.JobTimeDao;
+import kodlamaio.hrms.dataAccess.abstacts.JobTitleDao;
+import kodlamaio.hrms.dataAccess.abstacts.JobTypeDao;
 import kodlamaio.hrms.entities.concretes.City;
 import kodlamaio.hrms.entities.concretes.JobAdvert;
+import kodlamaio.hrms.entities.dtos.JobAdvertAddDto;
 
 @Service
 public class JobAdvertManager implements JobAdvertService{
 	
 	private JobAdvertDao jobAdvertDao;
+	private EmployerDao employerDao;
+	private CityDao cityDao;
+	private JobTimeDao jobTimeDao;
+	private JobTypeDao jobTypeDao;
+	private JobTitleDao jobTitleDao;
 	
 	@Autowired
-	public JobAdvertManager(JobAdvertDao jobAdvertDao) {
+	public JobAdvertManager(JobAdvertDao jobAdvertDao, EmployerDao employerDao, CityDao cityDao, JobTimeDao jobTimeDao,
+			JobTypeDao jobTypeDao, JobTitleDao jobTitleDao) {
 		super();
 		this.jobAdvertDao = jobAdvertDao;
+		this.employerDao = employerDao;
+		this.cityDao = cityDao;
+		this.jobTimeDao = jobTimeDao;
+		this.jobTypeDao = jobTypeDao;
+		this.jobTitleDao = jobTitleDao;
 	}
-
+	
 	@Override
-	public Result add(JobAdvert jobAdvert) {
+	public Result add(JobAdvertAddDto jobAdvertDto) {
+		JobAdvert jobAdvert = new JobAdvert();
+		jobAdvert.setApplicationDeadline(jobAdvertDto.getDeadLine());
+		jobAdvert.setCity(this.cityDao.getById(jobAdvertDto.getCityId()));
+		jobAdvert.setDescription(jobAdvertDto.getDescription());
+		jobAdvert.setEmployer(this.employerDao.getById(jobAdvertDto.getEmployerId()));
+		jobAdvert.setJobTitle(this.jobTitleDao.getById(jobAdvertDto.getJobTitleId()));
+		jobAdvert.setJobTime(this.jobTimeDao.getById(jobAdvertDto.getJobTimesId()));
+		jobAdvert.setJobType(this.jobTypeDao.getById(jobAdvertDto.getJobTypeId()));
+		jobAdvert.setMaxSalaries(jobAdvertDto.getMaxSalaries());
+		jobAdvert.setMinSalaries(jobAdvertDto.getMinSalaries());
+		jobAdvert.setVacantPositionNumber(jobAdvertDto.getVacantPositionNumber());
 		this.jobAdvertDao.save(jobAdvert);
 		return new SuccessResult("İş ilanı eklendi!");
 	}
@@ -44,7 +72,7 @@ public class JobAdvertManager implements JobAdvertService{
 
 	@Override
 	public DataResult<List<JobAdvert>> getByStatus(boolean status) {
-		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByStatus(status),"İş ilanı aktif!");
+		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByStatus(status));
 	}
 
 	@Override

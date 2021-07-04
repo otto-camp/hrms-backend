@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +17,11 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.entities.concretes.City;
 import kodlamaio.hrms.entities.concretes.JobAdvert;
+import kodlamaio.hrms.entities.dtos.JobAdvertAddDto;
 
 @RestController
 @RequestMapping("/api/job-adverts")
+@CrossOrigin
 public class JobAdvertsController {
 	
 	private JobAdvertService jobAdvertService;
@@ -29,7 +32,7 @@ public class JobAdvertsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobAdvert jobAdvert) {
+	public Result add(@RequestBody JobAdvertAddDto jobAdvert) {
 		return jobAdvertService.add(jobAdvert);
 	}
 	

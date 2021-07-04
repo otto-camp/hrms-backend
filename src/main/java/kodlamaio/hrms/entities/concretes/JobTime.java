@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,23 +17,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name="job_titles")
-public class JobTitle {
+@Table(name = "job_time")
+public class JobTime {
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "title")
-	private String title;
+	@Column(name = "job_time")
+	private String jobTime;
 	
-	@Column(name = "code")
-	private String code;
-	
-	@OneToMany(mappedBy = "jobTitle")
+	@OneToMany(mappedBy = "jobTime")
 	@JsonIgnore
 	private List<JobAdvert> jobAdverts;
 }

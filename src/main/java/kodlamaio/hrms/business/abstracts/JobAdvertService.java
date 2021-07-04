@@ -7,10 +7,11 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.entities.concretes.City;
 import kodlamaio.hrms.entities.concretes.JobAdvert;
+import kodlamaio.hrms.entities.dtos.JobAdvertAddDto;
 
 public interface JobAdvertService {
 	
-	Result add(JobAdvert jobAdvert);
+	Result add(JobAdvertAddDto jobAdvertDto);
 	
 	DataResult<List<JobAdvert>> getAll();
 	
