@@ -80,4 +80,12 @@ public class JobAdvertManager implements JobAdvertService{
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getByCity(city));
 	}
 
+	@Override
+	public Result confirmationJobAdvert(int id, boolean isVerified) {
+		JobAdvert jobAdvert = new JobAdvert();
+		jobAdvert.setId(id);
+		jobAdvert.setVerified(isVerified);
+		return new SuccessResult("İş ilanı onaylandı!");
+	}
+
 }

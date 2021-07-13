@@ -15,7 +15,6 @@ import kodlamaio.hrms.business.abstracts.EmployeeService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.entities.concretes.Employee;
-
 @RestController
 @RequestMapping("/api/employee")
 public class EmployeesController {
@@ -36,5 +35,6 @@ public class EmployeesController {
 	public Result add(@Valid @RequestBody Employee employee) {
 		return this.employeeService.add(employee);
 	}
-
+	
+	
 }

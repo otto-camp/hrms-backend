@@ -37,4 +37,11 @@ public class ConfirmationCode {
 	@Column(name="confirmation_date")
 	private LocalDate confirmationDate = LocalDate.now();
 	
+	public ConfirmationCode(int userId, String confirmationCode, boolean isConfirmed, LocalDate confirmationDate) {
+		super();
+		this.userId = userId;
+		this.confirmationCode = confirmationCode;
+		this.isConfirmed = isConfirmed;
+		this.confirmationDate = confirmationDate;
+	}
 }

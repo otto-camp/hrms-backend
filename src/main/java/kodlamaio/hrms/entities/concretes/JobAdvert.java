@@ -50,8 +50,8 @@ public class JobAdvert {
 	@Column(name="status")
 	private boolean status;
 	
-	//@Column(name = "is_verified")
-	//private boolean isVerified = false;
+	@Column(name = "is_verified")
+	private boolean isVerified = false;
 	
 	@ManyToOne()
 	@JoinColumn(name="employer_id")
@@ -74,4 +74,8 @@ public class JobAdvert {
 	@ManyToOne()
 	@JoinColumn(name = "job_time")
 	private JobTime jobTime;
+	
+	@ManyToOne()
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
 }

@@ -32,7 +32,9 @@ public class CvManager implements CvService {
 
 	@Override
 	public Result update(Cv cv) {
-		this.cvDao.save(cv);
+		Cv cvUp = cvDao.getById(cv.getId());
+		cvUp = cv;
+		cvDao.save(cvUp);
 		return new SuccessResult("Cv güncellendi!");
 	}
 

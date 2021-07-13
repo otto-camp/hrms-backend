@@ -32,7 +32,9 @@ public class CvExperienceManager implements CvExperienceService{
 
 	@Override
 	public Result update(CvExperience cvExperience) {
-		this.cvExperienceDao.save(cvExperience);
+		CvExperience experience = cvExperienceDao.getById(cvExperience.getId());
+		experience = cvExperience;
+		cvExperienceDao.save(experience);
 		return new SuccessResult("İş tecrübeniz güncellendi!");
 	}
 

@@ -55,4 +55,10 @@ public class JobAdvertsController {
 	public DataResult<List<JobAdvert>> getByCity(@RequestParam City city){
 		return jobAdvertService.getByCity(city);
 	}
+	
+	@PostMapping("/confirmatinJobAdvert")
+	public Result confirmationJobAdvert(@RequestParam int id, boolean isVerified) {
+		return jobAdvertService.confirmationJobAdvert(id, true);
+	}
+	
 }

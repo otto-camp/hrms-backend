@@ -32,7 +32,9 @@ public class CvLanguageManager implements CvLanguageService{
 
 	@Override
 	public Result update(CvLanguage cvLanguage) {
-		this.cvLanguageDao.save(cvLanguage);
+		CvLanguage language = cvLanguageDao.getById(cvLanguage.getId());
+		language = cvLanguage;
+		cvLanguageDao.save(language);
 		return new SuccessResult("Yabancı dil güncellendi!");
 	}
 

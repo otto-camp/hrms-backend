@@ -33,7 +33,9 @@ public class CvEducationManager implements CvEducationService {
 
 	@Override
 	public Result update(CvEducation cvEducation) {
-		this.cvEducationDao.save(cvEducation);
+		CvEducation education = cvEducationDao.getById(cvEducation.getId());
+		education = cvEducation;
+		cvEducationDao.save(education);
 		return new SuccessResult("Eğitim bilgileriniz güncellendi!");
 	}
 

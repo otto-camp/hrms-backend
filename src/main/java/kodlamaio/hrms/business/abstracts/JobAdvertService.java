@@ -20,4 +20,6 @@ public interface JobAdvertService {
 	DataResult<List<JobAdvert>> getByStatus(boolean status);
 	
 	DataResult<List<JobAdvert>> getByCity(City city);
+	
+	Result confirmationJobAdvert(int id, boolean isVerified);
 }

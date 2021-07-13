@@ -12,10 +12,12 @@ import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstacts.EmployeeDao;
 import kodlamaio.hrms.entities.concretes.Employee;
+
 @Service
-public class EmployeeManager implements EmployeeService{
+public class EmployeeManager implements EmployeeService {
 
 	private EmployeeDao employeeDao;
+
 	@Autowired
 	public EmployeeManager(EmployeeDao employeeDao) {
 		super();
