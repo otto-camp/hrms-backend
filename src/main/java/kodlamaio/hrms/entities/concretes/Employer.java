@@ -39,8 +39,8 @@ public class Employer extends User{
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	@Column(name = "is_verified")
-	private boolean isVerified = false;
+	//@Column(name = "is_verified")
+	//private boolean isVerified = false;
 	
 	@OneToMany(mappedBy = "employer")
 	@JsonIgnore

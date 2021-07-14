@@ -33,4 +33,9 @@ public class EmployerManager implements EmployerService{
 		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), "İşverenler başarıyla getirildi");
 	}
 
+	@Override
+	public DataResult<Employer> getByEmail(String email) {
+		return new SuccessDataResult<Employer>(this.employerDao.getByEmail(email));
+	}
+
 }

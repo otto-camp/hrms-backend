@@ -35,4 +35,9 @@ public class EmployeeManager implements EmployeeService {
 		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(), "Çalışanlar başarıyla getirildi!");
 	}
 
+	@Override
+	public DataResult<Employee> getByEmail(String email) {
+		return new SuccessDataResult<Employee>(this.employeeDao.getByEmail(email));
+	}
+
 }

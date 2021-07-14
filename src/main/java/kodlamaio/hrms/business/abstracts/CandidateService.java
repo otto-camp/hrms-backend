@@ -11,5 +11,5 @@ public interface CandidateService {
 	DataResult<List<Candidate>> getAll();
 	DataResult<Candidate> getById(int id);
 	DataResult<Candidate> getByIdentityNumber(String identityNumber);
-	
+	DataResult<Candidate> getByEmail(String email);
 }

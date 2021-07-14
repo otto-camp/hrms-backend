@@ -67,7 +67,7 @@ public class AuthManager implements AuthService {
 		employer.setPassword(employerRegisterDto.getPassword());
 		employer.setPasswordRep(employerRegisterDto.getPasswordRep());
 		employer.setPhoneNumber(employerRegisterDto.getPhoneNumber());
-		employer.setVerified(false);
+		//employer.setVerified(false);
 		employer.setWebsite(employerRegisterDto.getWebsite());
 		employerService.add(employer);
 		String code = confirmationService.sendCode();

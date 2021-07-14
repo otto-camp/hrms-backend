@@ -45,5 +45,10 @@ public class CandidateManager implements CandidateService{
 		return new SuccessDataResult<Candidate>(this.candidateDao.getByIdentityNumber(identityNumber));
 	}
 
+	@Override
+	public DataResult<Candidate> getByEmail(String email) {
+		return new SuccessDataResult<Candidate>(this.candidateDao.getByEmail(email));
+	}
+
 
 }

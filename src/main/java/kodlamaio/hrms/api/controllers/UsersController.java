@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,7 @@ import kodlamaio.hrms.core.utilities.result.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.entities.concretes.User;
+import kodlamaio.hrms.entities.dtos.UserLoginDto;
 
 @RestController
 @RequestMapping("/api/users")
@@ -44,10 +46,15 @@ public class UsersController {
 		return this.userService.getAll();
 	}
 	
-/*	@PostMapping("/add")
-	public Result add(@Valid @RequestBody User user) {
-		return this.userService.add(user);
-	}*/
+	@PostMapping("/login")
+	DataResult<?> login(@RequestBody UserLoginDto userDto){
+		return this.userService.login(userDto);
+	}
+	
+	@PostMapping("/getByEmail")
+	DataResult<User> getByEmail(@RequestParam String email){
+		return this.userService.getByEmail(email);
+	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
