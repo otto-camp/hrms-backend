@@ -56,9 +56,14 @@ public class JobAdvertsController {
 		return jobAdvertService.getByCity(city);
 	}
 	
-	@PostMapping("/confirmatinJobAdvert")
-	public Result confirmationJobAdvert(@RequestParam int id, boolean isVerified) {
-		return jobAdvertService.confirmationJobAdvert(id, true);
+	@PostMapping("/updateJobAdvert")
+	public Result updateJobAdvert(@RequestParam boolean isVerified, int id) {
+		return jobAdvertService.updateJobAdvert(isVerified, id);
+	}
+	
+	@PostMapping("/changeStatus")
+	public Result changestatus(@RequestParam boolean status, int id) {
+		return jobAdvertService.changestatus(status, id);
 	}
 	
 }

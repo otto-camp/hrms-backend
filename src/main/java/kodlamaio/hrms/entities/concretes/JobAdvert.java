@@ -48,7 +48,7 @@ public class JobAdvert {
 	private LocalDate applicationDeadline;
 	
 	@Column(name="status")
-	private boolean status;
+	private boolean status = false;
 	
 	@Column(name = "is_verified")
 	private boolean isVerified = false;

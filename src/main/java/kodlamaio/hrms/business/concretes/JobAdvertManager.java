@@ -81,11 +81,15 @@ public class JobAdvertManager implements JobAdvertService{
 	}
 
 	@Override
-	public Result confirmationJobAdvert(int id, boolean isVerified) {
-		JobAdvert jobAdvert = new JobAdvert();
-		jobAdvert.setId(id);
-		jobAdvert.setVerified(isVerified);
-		return new SuccessResult("İş ilanı onaylandı!");
+	public Result updateJobAdvert(boolean isVerified, int id) {
+		this.jobAdvertDao.changeverify(isVerified, id);
+		return new SuccessResult("İlan durumu değiştirildi!");
+	}
+
+	@Override
+	public Result changestatus(boolean status, int id) {
+		this.jobAdvertDao.changestatus(status, id);
+		return new SuccessResult("İlan aktiflik durumu değiştirildi!");
 	}
 
 }

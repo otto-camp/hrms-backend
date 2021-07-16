@@ -21,5 +21,7 @@ public interface JobAdvertService {
 	
 	DataResult<List<JobAdvert>> getByCity(City city);
 	
-	Result confirmationJobAdvert(int id, boolean isVerified);
+	Result updateJobAdvert(boolean isVerified, int id);
+	
+	Result changestatus(boolean status, int id);
 }
