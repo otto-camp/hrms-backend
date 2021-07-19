@@ -17,5 +17,4 @@ public interface CvLanguageService {
 
 	DataResult<List<CvLanguage>> getAll();
 
-	DataResult<List<CvLanguage>> getByCandidateId(int id);
 }

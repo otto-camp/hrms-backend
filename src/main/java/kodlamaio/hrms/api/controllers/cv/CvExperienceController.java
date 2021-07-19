@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.cv.CvExperienceService;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
-import kodlamaio.hrms.entities.concretes.cv.CvExperience;
+import kodlamaio.hrms.entities.dtos.CvExperienceDto;
 
 @RestController
 @RequestMapping("/api/cvExp")
@@ -25,8 +25,8 @@ public class CvExperienceController {
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody CvExperience cvExperience) {
-		this.cvExperienceService.add(cvExperience);
+	public Result add(@RequestBody CvExperienceDto cvExperienceDto) {
+		this.cvExperienceService.add(cvExperienceDto);
 		return new SuccessResult("İş tecrübeleriniz eklendi!");
 	}
 }

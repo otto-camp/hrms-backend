@@ -10,24 +10,43 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstacts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstacts.cv.CvDao;
+import kodlamaio.hrms.dataAccess.abstacts.cv.CvLanguageDao;
+import kodlamaio.hrms.dataAccess.abstacts.cv.CvPhotoDao;
 import kodlamaio.hrms.entities.concretes.cv.Cv;
-
+import kodlamaio.hrms.entities.dtos.CvDto;
 
 @Service
 public class CvManager implements CvService {
-
+	
 	private CvDao cvDao;
+	private CandidateDao candidateDao;
+	private CvPhotoDao cvPhotoDao;
+	private CvLanguageDao cvLanguageDao;
+	
 	@Autowired
-	public CvManager(CvDao cvDao) {
+	public CvManager(CvDao cvDao, CandidateDao candidateDao, CvPhotoDao cvPhotoDao, CvLanguageDao cvLanguageDao) {
 		super();
 		this.cvDao = cvDao;
+		this.candidateDao = candidateDao;
+		this.cvPhotoDao = cvPhotoDao;
+		this.cvLanguageDao = cvLanguageDao;
 	}
 
 	@Override
-	public Result add(Cv cv) {
+	public Result add(CvDto cvDto) {
+		Cv cv = new Cv();
+		cv.setCandidate(this.candidateDao.getById(cvDto.getCandidateId()));
+		cv.setCoverLetter(cvDto.getCoverLetter());
+		cv.setGithubLink(cvDto.getGithubLink());
+		cv.setLinkedinLink(cvDto.getLinkedinLink());
+		cv.setProgrammingLanguage(cvDto.getProgrammingLanguage());
+		cv.setSkills(cvDto.getSkills());
+		cv.setCvLanguage(this.cvLanguageDao.getById(cvDto.getLanguageId()));
+		cv.setCvPhoto(this.cvPhotoDao.getById(cvDto.getPhotoId()));
 		this.cvDao.save(cv);
-		return new SuccessResult("Cv eklendi!");
+		return new SuccessResult("Cv kaydedildi!");
 	}
 
 	@Override
@@ -58,7 +77,5 @@ public class CvManager implements CvService {
 	public DataResult<Cv> getByCandidateId(int id) {
 		return new SuccessDataResult<Cv>(this.cvDao.getByCandidateId(id));
 	}
-
-
 
 }

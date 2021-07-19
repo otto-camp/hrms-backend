@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.cv.CvEducationService;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
-import kodlamaio.hrms.entities.concretes.cv.CvEducation;
+import kodlamaio.hrms.entities.dtos.CvEducationDto;
 
 @RestController
 @RequestMapping("/api/cvEdu")
@@ -24,8 +24,8 @@ public class CvEducationController {
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody CvEducation cvEducation) {
-		this.cvEducationService.add(cvEducation);
+	public Result add(@RequestBody CvEducationDto cvEducationDto) {
+		this.cvEducationService.add(cvEducationDto);
 		return new SuccessResult("Eğitim bilgileriniz eklendi!");
 	}
 }

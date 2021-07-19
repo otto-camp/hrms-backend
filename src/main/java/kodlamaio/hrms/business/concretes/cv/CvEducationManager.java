@@ -10,22 +10,31 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstacts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstacts.cv.CvEducationDao;
 import kodlamaio.hrms.entities.concretes.cv.CvEducation;
+import kodlamaio.hrms.entities.dtos.CvEducationDto;
 
 @Service
 public class CvEducationManager implements CvEducationService {
-
+	
 	private CvEducationDao cvEducationDao;
-
+	private CandidateDao candidateDao;
+	
 	@Autowired
-	public CvEducationManager(CvEducationDao cvEducationDao) {
+	public CvEducationManager(CvEducationDao cvEducationDao, CandidateDao candidateDao) {
 		super();
 		this.cvEducationDao = cvEducationDao;
+		this.candidateDao = candidateDao;
 	}
 
 	@Override
-	public Result add(CvEducation cvEducation) {
+	public Result add(CvEducationDto cvEducationDto) {
+		CvEducation cvEducation = new CvEducation();
+		cvEducation.setCandidate(this.candidateDao.getById(cvEducationDto.getCandidateId()));
+		cvEducation.setStartDate(cvEducationDto.getStartDate());
+		cvEducation.setGraduationDate(cvEducationDto.getGraduationDate());
+		cvEducation.setUniversities(cvEducationDto.getUniversities());
 		this.cvEducationDao.save(cvEducation);
 		return new SuccessResult("Eğitim bilgileriniz eklendi!");
 

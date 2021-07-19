@@ -1,5 +1,7 @@
 package kodlamaio.hrms.entities.concretes.cv;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
@@ -33,8 +34,8 @@ public class CvPhoto {
 	
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
-	@JsonBackReference
 	private Candidate candidate;
 	
-	
+	@OneToMany(mappedBy = "cvPhoto")
+	private List<Cv> cvs;
 }

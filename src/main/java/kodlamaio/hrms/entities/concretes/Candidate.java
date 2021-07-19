@@ -10,12 +10,10 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import kodlamaio.hrms.entities.concretes.cv.Cv;
 import kodlamaio.hrms.entities.concretes.cv.CvEducation;
 import kodlamaio.hrms.entities.concretes.cv.CvExperience;
-import kodlamaio.hrms.entities.concretes.cv.CvLanguage;
 import kodlamaio.hrms.entities.concretes.cv.CvPhoto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,26 +46,17 @@ public class Candidate extends User {
 
 	@OneToMany(mappedBy = "candidate")
 	@JsonIgnore
-	@JsonManagedReference
 	private List<CvEducation> cvEducations;
 
 	@OneToMany(mappedBy = "candidate")
 	@JsonIgnore
-	@JsonManagedReference
-	private List<CvLanguage> cvLanguages;
-
-	@OneToMany(mappedBy = "candidate")
-	@JsonIgnore
-	@JsonManagedReference
 	private List<CvExperience> cvExperiences;
 
 	@OneToMany(mappedBy = "candidate")
 	@JsonIgnore
-	@JsonManagedReference
 	private List<CvPhoto> cvPhotos;
 
 	@OneToMany(mappedBy = "candidate")
 	@JsonIgnore
-	@JsonManagedReference
 	private List<Cv> cvs;
 }

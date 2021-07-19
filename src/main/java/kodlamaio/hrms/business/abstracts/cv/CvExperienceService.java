@@ -5,9 +5,10 @@ import java.util.List;
 import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.entities.concretes.cv.CvExperience;
+import kodlamaio.hrms.entities.dtos.CvExperienceDto;
 
 public interface CvExperienceService {
-	Result add(CvExperience cvExperience);
+	Result add(CvExperienceDto cvExperienceDto);
 
 	Result update(CvExperience cvExperience);
 

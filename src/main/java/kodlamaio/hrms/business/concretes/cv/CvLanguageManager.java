@@ -54,9 +54,4 @@ public class CvLanguageManager implements CvLanguageService{
 		return new SuccessDataResult<List<CvLanguage>>(this.cvLanguageDao.findAll());
 	}
 
-	@Override
-	public DataResult<List<CvLanguage>> getByCandidateId(int id) {
-		return new SuccessDataResult<List<CvLanguage>>(this.cvLanguageDao.getAllByCandidateId(id));
-	}
-
 }

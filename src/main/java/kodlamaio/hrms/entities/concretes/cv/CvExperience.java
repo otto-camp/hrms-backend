@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,6 +43,6 @@ public class CvExperience {
 	
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
-	@JsonBackReference
 	private Candidate candidate;
+	
 }

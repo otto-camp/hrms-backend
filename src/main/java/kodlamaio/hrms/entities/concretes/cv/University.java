@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import kodlamaio.hrms.entities.concretes.City;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,7 +38,6 @@ public class University {
 	private int status;
 	
 	@OneToMany(mappedBy = "university")
-	
 	private List<Faculty> faculties;
 	
 	@ManyToOne
@@ -45,5 +46,6 @@ public class University {
 	
 	@ManyToOne
 	@JoinColumn(name = "university_id")
+	@JsonIgnore
 	private CvEducation cvEducation;
 }

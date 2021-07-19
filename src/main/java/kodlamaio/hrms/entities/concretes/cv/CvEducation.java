@@ -14,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.PastOrPresent;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,7 +43,6 @@ public class CvEducation {
 
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
-	@JsonBackReference
 	private Candidate candidate;
 
 }

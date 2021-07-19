@@ -10,22 +10,32 @@ import kodlamaio.hrms.core.utilities.result.DataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstacts.CandidateDao;
 import kodlamaio.hrms.dataAccess.abstacts.cv.CvExperienceDao;
 import kodlamaio.hrms.entities.concretes.cv.CvExperience;
+import kodlamaio.hrms.entities.dtos.CvExperienceDto;
 
 @Service
-public class CvExperienceManager implements CvExperienceService{
+public class CvExperienceManager implements CvExperienceService {
 
 	private CvExperienceDao cvExperienceDao;
-	
+	private CandidateDao candidateDao;
+
 	@Autowired
-	public CvExperienceManager(CvExperienceDao cvExperienceDao) {
+	public CvExperienceManager(CvExperienceDao cvExperienceDao, CandidateDao candidateDao) {
 		super();
 		this.cvExperienceDao = cvExperienceDao;
+		this.candidateDao = candidateDao;
 	}
 
 	@Override
-	public Result add(CvExperience cvExperience) {
+	public Result add(CvExperienceDto cvExperienceDto) {
+		CvExperience cvExperience = new CvExperience();
+		cvExperience.setCandidate(this.candidateDao.getById(cvExperienceDto.getCandidateId()));
+		cvExperience.setCompanyName(cvExperienceDto.getCompanyName());
+		cvExperience.setPositionName(cvExperienceDto.getPositionName());
+		cvExperience.setStartDate(cvExperienceDto.getStartDate());
+		cvExperience.setEndDate(cvExperienceDto.getEndDate());
 		this.cvExperienceDao.save(cvExperience);
 		return new SuccessResult("İş tecrübeniz eklendi!");
 	}
@@ -61,7 +71,8 @@ public class CvExperienceManager implements CvExperienceService{
 
 	@Override
 	public DataResult<List<CvExperience>> getAllByCandidateIdOrderByEndDateDesc(int id) {
-		return new SuccessDataResult<List<CvExperience>>(this.cvExperienceDao.getAllByCandidate_IdOrderByEndDateDesc(id));
+		return new SuccessDataResult<List<CvExperience>>(
+				this.cvExperienceDao.getAllByCandidate_IdOrderByEndDateDesc(id));
 	}
 
 }
