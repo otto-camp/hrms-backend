@@ -2,6 +2,7 @@ package kodlamaio.hrms.api.controllers.cv;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import kodlamaio.hrms.entities.dtos.CvExperienceDto;
 
 @RestController
 @RequestMapping("/api/cvExp")
+@CrossOrigin
 public class CvExperienceController {
 
 	private CvExperienceService cvExperienceService;

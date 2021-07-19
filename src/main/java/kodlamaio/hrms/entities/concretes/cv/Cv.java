@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.concretes.cv;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import kodlamaio.hrms.entities.concretes.Candidate;
 import lombok.AllArgsConstructor;
@@ -44,14 +45,17 @@ public class Cv {
 
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
+	@JsonIgnore
 	private Candidate candidate;
 
 	@ManyToOne()
 	@JoinColumn(name = "cv_language_id")
+	@JsonIgnore
 	private CvLanguage cvLanguage;
 	
 	@ManyToOne()
 	@JoinColumn(name = "cv_photo_id")
+	@JsonIgnore
 	private CvPhoto cvPhoto;
 	
 }
