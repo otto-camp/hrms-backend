@@ -38,14 +38,14 @@ public class University {
 	private int status;
 	
 	@OneToMany(mappedBy = "university")
+	@JsonIgnore
 	private List<Faculty> faculties;
 	
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
 	
-	@ManyToOne
-	@JoinColumn(name = "university_id")
+	@OneToMany(mappedBy = "university")
 	@JsonIgnore
-	private CvEducation cvEducation;
+	private List<CvEducation> cvEducations;
 }

@@ -1,7 +1,6 @@
 package kodlamaio.hrms.entities.concretes.cv;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.PastOrPresent;
 
@@ -38,8 +36,17 @@ public class CvEducation {
 	@Column(name = "graduation_date")
 	private LocalDate graduationDate;
 
-	@OneToMany(mappedBy = "cvEducation")
-	private List<University> universities;
+	@ManyToOne
+	@JoinColumn(name = "university_id")
+	private University university;
+	
+	@ManyToOne
+	@JoinColumn(name = "faculty_id")
+	private Faculty faculty;
+	
+	@ManyToOne
+	@JoinColumn(name = "section_id")
+	private Section section;
 
 	@ManyToOne
 	@JoinColumn(name = "candidate_id")
