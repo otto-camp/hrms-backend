@@ -50,12 +50,10 @@ public class Cv {
 
 	@ManyToOne()
 	@JoinColumn(name = "cv_language_id")
-	@JsonIgnore
 	private CvLanguage cvLanguage;
 	
 	@ManyToOne()
 	@JoinColumn(name = "cv_photo_id")
-	@JsonIgnore
 	private CvPhoto cvPhoto;
 	
 }
