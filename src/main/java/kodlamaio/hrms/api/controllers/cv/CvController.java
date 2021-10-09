@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.cv.CvService;
 import kodlamaio.hrms.core.utilities.result.Result;
+import kodlamaio.hrms.entities.concretes.cv.Cv;
 import kodlamaio.hrms.entities.dtos.CvDto;
 
 @RestController
@@ -34,6 +35,11 @@ public class CvController {
 	@GetMapping("/getAll")
 	public ResponseEntity<?> getAll(){
 		return ResponseEntity.ok(this.cvService.getAll());
+	}
+	
+	@PostMapping("/update")
+	public Result update(@RequestBody Cv cv) {
+		return this.cvService.update(cv);
 	}
 
 }

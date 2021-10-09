@@ -53,10 +53,10 @@ public class Candidate extends User {
 	private List<CvExperience> cvExperiences;
 
 	@OneToMany(mappedBy = "candidate")
-	@JsonIgnore
+	
 	private List<CvPhoto> cvPhotos;
 
 	@OneToMany(mappedBy = "candidate")
-	@JsonIgnore
+	
 	private List<Cv> cvs;
 }

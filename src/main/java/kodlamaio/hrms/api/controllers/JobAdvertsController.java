@@ -21,7 +21,7 @@ import kodlamaio.hrms.entities.dtos.JobAdvertAddDto;
 
 @RestController
 @RequestMapping("/api/job-adverts")
-@CrossOrigin
+@CrossOrigin()
 public class JobAdvertsController {
 	
 	private JobAdvertService jobAdvertService;
